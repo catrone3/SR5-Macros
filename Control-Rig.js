@@ -2,7 +2,7 @@ let player = game.actors.get(actor.system.driver);
 let items = player.items._source;
 let rating = 0;
 for (let key=0; key<items.length; key++) {
-  if (items[key].name == "Control Rig") {
+  if (items[key].name.starsWith("Control Rig")) {
     rating = items[key].system.technology.rating;
   };
 }
