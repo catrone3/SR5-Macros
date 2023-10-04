@@ -46,12 +46,19 @@ let changes = [
 //values pulled from weapons mounted
 let drone_items = actor.items._source;
 let object = {};
+let weapon_changes = [];
 let weapon_accuracy = 0;
 for (let key=0; key<drone_items.length; key++) {
   if (drone_items[key].type == "weapon") {
+    var weapon = actor.items.filter(a => a.name == drone_items[key].name)
     weapon_accuracy = drone_items[key].system.action.limit.value + rating;
     object = {key:"drone_items[key].system.action.limit.value", value: rating, mode:2}
-    changes.push(object);
+    var weapon = weaponEffect = {
+      "label":"ControlRigModifier",
+      "change": [
+        object
+      ]
+    }
   };
 }
 
