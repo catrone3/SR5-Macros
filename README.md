@@ -11,5 +11,5 @@ Discord names are used, github accounts are linked where known
 - pysche (Effect Macro)
 - Sustained Spells (Effect Macro)
 
-#### Poetics
+#### [Poetics](https://github.com/ThePoetics)
 - Contacts creator
