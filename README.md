@@ -12,6 +12,7 @@ Discord names are used, github accounts are linked where known
     - weapons do not get accuracy modified currently
 - spirit summoning
     - not applying powers to created actor
+- Swarm (Effect Macro)
 
 #### T.J.
 - Armor Spell (Effect Macro)
