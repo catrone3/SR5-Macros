@@ -6,19 +6,19 @@ Macros I have made or found for use in FoundryVTT. Any found macros will have re
 Discord names are used, github accounts are linked where known
 
 #### catrone3
-- remove-duplicate-items
+- [remove-duplicate-items](Macros/catrone3/remove-duplicate-items.js)
     - has an issue getting every duplicate still, possible issue in string comparison
-- Control-Rig (Effect Macro)
+- [Control-Rig](Effect-Macros/catrone3/Control-Rig.js) (Effect Macro)
     - weapons do not get accuracy modified currently
-- spirit summoning
+- [spirit summoning](Macros/catrone3/spirit-summoning.js)
     - not applying powers to created actor
-- Swarm (Effect Macro)
+- [Swarm](Effect-Macros/catrone3/Swarm.js) (Effect Macro)
 
 #### T.J.
-- Armor Spell (Effect Macro)
-- Increase Refleces (Effect Macro)
-- pysche (Effect Macro)
-- Sustained Spells (Effect Macro)
+- [Armor Spell](Effect-Macros/TJonDiscord/ArmorSpell) (Effect Macro)
+- [Increase Refleces](Effect-Macros/TJonDiscord/IncreaseReflexes) (Effect Macro)
+- [pysche](Effect-Macros/TJonDiscord/psyche) (Effect Macro)
+- [Sustained Spells](Effect-Macros/TJonDiscord/SustainedSpells) (Effect Macro)
 
 #### [Poetics](https://github.com/ThePoetics)
-- Contacts creator
+- [Contacts creator](Macros/PoeticsonDiscord/contacts.js)
