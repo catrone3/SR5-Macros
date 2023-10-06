@@ -8,7 +8,7 @@ Discord names are used, github accounts are linked where known
 #### [catrone3](https://github.com/catrone3)
 - [remove-duplicate-items](Macros/catrone3/remove-duplicate-items.js)
     - has an issue getting every duplicate still, possible issue in string comparison
-- [Control-Rig](Effect-Macros/catrone3/Control-Rig.js) (Effect Macro)
+- [Control-Rig](Effect-Macros/catrone3/Control-Rig) (Effect Macro)
     - weapons do not get accuracy modified currently
 - [spirit summoning](Macros/catrone3/spirit-summoning.js)
     - not applying powers to created actor
