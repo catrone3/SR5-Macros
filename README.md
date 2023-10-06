@@ -5,7 +5,7 @@ Macros I have made or found for use in FoundryVTT. Any found macros will have re
 ### Contributors
 Discord names are used, github accounts are linked where known
 
-#### catrone3
+#### [catrone3](https://github.com/catrone3)
 - [remove-duplicate-items](Macros/catrone3/remove-duplicate-items.js)
     - has an issue getting every duplicate still, possible issue in string comparison
 - [Control-Rig](Effect-Macros/catrone3/Control-Rig.js) (Effect Macro)
