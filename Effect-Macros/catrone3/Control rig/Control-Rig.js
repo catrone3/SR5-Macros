@@ -6,7 +6,11 @@ for (let key=0; key<items.length; key++) {
   if (items[key].name.startsWith("Control Rig")) {
     rating = items[key].system.technology.rating;
   };
+  if (items[key].name.startsWith("Mind Over Machine")) {
+    rating = items[key].system.rating;
+  }
 }
+
 //values pulled from the player character
 let logic = player.system.attributes.logic.value;
 let intuition = player.system.attributes.intuition.value;
@@ -54,7 +58,7 @@ for (let key=0; key<items_list.length; key++) {
     var weapon = items_list[key].name;
     var gun = drone_items.getName(weapon);
     weapon_accuracy = gun.system.action.limit.value + rating;
-    gun.update({"system.action.limit.value": weapon_accuracy});
+    gun.update({"system.action.limit.base": weapon_accuracy});
     gun.update({"system.action.attribute": "logic"});
     gun.update({"system.action.skill": "gunnery"});
   }
