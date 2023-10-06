@@ -43,24 +43,22 @@ let changes = [
   {key:"system.limits.sensor.temp", value: rating, mode:2},
 ];
 
-//values pulled from weapons mounted
-let drone_items = actor.items._source;
+//values pulled from weapons mounted (commented until able to be done)
+let items_list = actor.items._source;
+let drone_items = actor.items;
 let object = {};
 let weapon_changes = [];
 let weapon_accuracy = 0;
-for (let key=0; key<drone_items.length; key++) {
-  if (drone_items[key].type == "weapon") {
-    var weapon = actor.items.filter(a => a.name == drone_items[key].name)
-    weapon_accuracy = drone_items[key].system.action.limit.value + rating;
-    object = {key:"drone_items[key].system.action.limit.value", value: rating, mode:2}
-    var weapon = weaponEffect = {
-      "label":"ControlRigModifier",
-      "change": [
-        object
-      ]
-    }
-  };
-}
+for (let key=0; key<items_list.length; key++) {
+  if (items_list[key].type == "weapon") {
+    var weapon = items_list[key].name;
+    var gun = drone_items.getName(weapon);
+    weapon_accuracy = gun.system.action.limit.value + rating;
+    gun.update({"system.action.limit.value": weapon_accuracy});
+    gun.update({"system.action.attribute": "logic"});
+    gun.update({"system.action.skill": "gunnery"});
+  }
+};
 
 effect.update({
   label: "Control Rig Bonus",
