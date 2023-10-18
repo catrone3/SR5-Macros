@@ -93,7 +93,7 @@ async function mainAsync() {
             let targets = targetlist();
             let tokenList = canvas.tokens.documentCollection;
             let deckTargets = "";
-            for(i = 0; i < targets.length; i++) {
+            for (i = 0; i < targets.length; i++) {
                 deckTargets = deckTargets + `"${targets[i]}"`;
                 if (i < targets.length - 1) {
                     deckTargets = deckTargets + ", ";
@@ -103,64 +103,66 @@ async function mainAsync() {
             deckMacro = `let targets = [${deckTargets}];
 let tokenList = canvas.tokens.documentCollection
 tokenList.forEach(element => {
-    element.actors.forEach(target => {
-        let effect = target.effects.find(i => i.name === "I Am The Firewall");
-        if (effect && targets.includes(target.name)) {
-            target.deleteEmbeddedDocuments("ActiveEffect", [effect.id]);
-        }
-    });
+    let target = element._actor;
+    let effect = target.effects.find(i => i.label === "I Am The Firewall");
+    if (effect && targets.includes(target.name)) {
+        target.deleteEmbeddedDocuments("ActiveEffect", [effect.id]);
+    }
 });`;
             tokenList.forEach(element => {
-                element.actors.forEach(target => {
-                    console.log(target.name);
-                    let effect = target.effects.find(i => i.name === "I Am The Firewall");
-                    if (target.name == decker.name) {
-                        if (effect) {
-                            console.log("updating effect");
-                            effect.update({
-                                changes,
+                let target = element._actor;
+                console.log(target.name);
+                let effect = target.effects.find(i => i.label === "I Am The Firewall");
+                if (target.name == decker.name) {
+                    if (effect) {
+                        console.log("updating effect");
+                        effect.update({
+                            changes,
+                            icon: "assets/sr/icons/matrix/firewall.svg",
+                            flags: {
+                                effectmacro: {
+                                    onTurnStart: {
+                                        script: deckMacro
+                                    }
+                                }
+                            }
+                        })
+                    } else {
+                        target.createEmbeddedDocuments(
+                            "ActiveEffect",
+                            [{
+                                label: "I Am The Firewall",
+                                icon: "assets/sr/icons/matrix/firewall.svg",
+                                duration: { "rounds": 1 },
                                 flags: {
                                     effectmacro: {
-                                        onTurnStart:{
+                                        onTurnStart: {
                                             script: deckMacro
                                         }
                                     }
-                                }
-                            })
-                        } else {
-                            target.createEmbeddedDocuments(
-                                "ActiveEffect",
-                                [{
-                                    name: "I Am The Firewall",
-                                    duration: { "rounds": 1 },
-                                    icon: "assets/sr/icons/matrix/firewall.svg",
-                                    flags: {
-                                        effectmacro: {
-                                            onTurnStart:{
-                                                script: deckMacro
-                                            }
-                                        }
-                                    },
-                                    changes
-                                }]
-                            );
-                        }
-                    } else if(targets.includes(target.name)) {
-                        if (effect) {
-                            effect.update({ changes });
-                        } else {
-                            target.createEmbeddedDocuments(
-                                "ActiveEffect",
-                                [{
-                                    name: "I Am The Firewall",
-                                    icon: "assets/sr/icons/matrix/firewall.svg",
-                                    duration: { "rounds": 1 },
-                                    changes
-                                }]
-                            );
-                        };
+                                },
+                                changes
+                            }]
+                        );
                     }
-                });
+                } else if (targets.includes(target.name)) {
+                    if (effect) {
+                        effect.update({ 
+                            icon: "assets/sr/icons/matrix/firewall.svg",
+                            changes 
+                        });
+                    } else {
+                        target.createEmbeddedDocuments(
+                            "ActiveEffect",
+                            [{
+                                label: "I Am The Firewall",
+                                icon: "assets/sr/icons/matrix/firewall.svg",
+                                duration: { "rounds": 1 },
+                                changes
+                            }]
+                        );
+                    };
+                }
             });
         }
     };

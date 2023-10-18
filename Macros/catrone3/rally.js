@@ -1,33 +1,27 @@
-let changes = [];
+if (canvas.tokens.controlled.length != 1) {
+    ui.notifications.warn("Please select a single hacker's token.");
+    return;
+}
 let leader = canvas.tokens.controlled[0].actor;
+let leaderid = leader._id;
 let modifiers = leader.system.wounds.value;
 let skill = leader.system.skills.active.leadership.value;
 let limit = leader.system.limits.social.value;
 let attribute = leader.system.attributes.charisma.value;
-let alliance = leader.prototypeToken.disposition;
+var decktoken = canvas.tokens.documentCollection.filter(element => {
+    return element.actorId === leaderid
+});
+let alliance = decktoken[0].disposition;
 let global = leader.system.modifiers.global;
-let displayPool = skill + attribute;
-let displayMod = "";
-if (!modifiers == 0) {
-    displayMod = " + Wounds " + modifiers;
-}
 let total = skill + attribute + modifiers + global;
-
-function findObject(key, value, array) {
-    for (let i = 0; i < array.length; i++) {
-        if (array[i][key].startsWith(value)) {
-            return true;
-        }
-    }
-    return false;
-};
 
 function findActiveCombat() {
     let characters = [];
-    let source = game.combats._source;
+    let source = game.combats;
     let id = "";
     source.forEach(element => {
-        if (element.active) {
+        let activeScene = element.scene.active;
+        if (activeScene) {
             id = element._id;
             characters = element.combatants;
         }
@@ -36,7 +30,7 @@ function findActiveCombat() {
 }
 
 function findCombatants(targets, combat) {
-    let combatants = game.combats.get(combat).combatants._source;
+    let combatants = game.combats.get(combat).combatants;
     let characters = [];
     combatants.forEach(element => {
         let id = element._id;
@@ -51,9 +45,10 @@ function targetlist() {
     let targets = [];
     let characters = findActiveCombat()[0];
     characters.forEach(element => {
+        var token = canvas.tokens.get(element.tokenId);
         var character = game.actors.get(element.actorId);
         if (character.type == "character") {
-            if (character.prototypeToken.disposition == alliance) {
+            if (token.document.disposition == alliance) {
                 targets.push(character._id);
             };
         };
@@ -88,7 +83,7 @@ async function mainAsync() {
                 limit: {
                     base: 0,
                     label: "SR5.Limit",
-                    mod: [{ name: "SR5.", value: limit }],
+                    mod: [{ name: "SR5.LimitSocial", value: limit }],
                     temp: 0,
                     value: limit
                 },
