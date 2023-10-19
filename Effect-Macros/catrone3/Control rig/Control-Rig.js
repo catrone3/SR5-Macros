@@ -51,7 +51,6 @@ let changes = [
 let items_list = actor.items._source;
 let drone_items = actor.items;
 let object = {};
-let weapon_changes = [];
 let weapon_accuracy = 0;
 for (let key=0; key<items_list.length; key++) {
   if (items_list[key].type == "weapon") {
