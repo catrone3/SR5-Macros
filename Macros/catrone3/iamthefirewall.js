@@ -24,7 +24,7 @@ function targetlist() {
     characters.forEach(element => {
         if (element.actor.type == "character") {
             if (element.document.disposition == deckalliance) {
-                targets.push(element.actor.name);
+                targets.push(element.name);
             };
         };
     });
@@ -93,7 +93,7 @@ async function mainAsync() {
             let targets = targetlist();
             let tokenList = canvas.tokens.documentCollection;
             let deckTargets = "";
-            for(i = 0; i < targets.length; i++) {
+            for (i = 0; i < targets.length; i++) {
                 deckTargets = deckTargets + `"${targets[i]}"`;
                 if (i < targets.length - 1) {
                     deckTargets = deckTargets + ", ";
@@ -103,68 +103,74 @@ async function mainAsync() {
             deckMacro = `let targets = [${deckTargets}];
 let tokenList = canvas.tokens.documentCollection
 tokenList.forEach(element => {
-    element.actors.forEach(target => {
-        let effect = target.effects.find(i => i.name === "I Am The Firewall");
-        if (effect && targets.includes(target.name)) {
-            target.deleteEmbeddedDocuments("ActiveEffect", [effect.id]);
-        }
-    });
+    if (targets.includes(element.name)) {
+        warpgate.mutate(element,{embedded: {ActiveEffect: {"I Am The Firewall": warpgate.CONST.DELETE}}}, {}, {permanent: true,comparisonKeys: {ActiveEffect: 'name'}});
+    }
 });`;
             tokenList.forEach(element => {
-                element.actors.forEach(target => {
-                    console.log(target.name);
-                    let effect = target.effects.find(i => i.name === "I Am The Firewall");
-                    if (target.name == decker.name) {
-                        if (effect) {
-                            console.log("updating effect");
-                            effect.update({
-                                changes,
-                                flags: {
-                                    effectmacro: {
-                                        onTurnStart:{
-                                            script: deckMacro
-                                        }
+                console.log(element);
+                let target = element.actor;
+                let effect = target.effects.find(i => i.label === "I Am The Firewall");
+                if (element.name == decker.name) {
+                        warpgate.mutate(element, {
+                            embedded: {
+                                ActiveEffect: {
+                                    "I Am The Firewall": {
+                                        description: "I Am The Firewall",
+                                        icon: "assets/sr/icons/matrix/firewall.svg",
+                                        duration: { "rounds": 1 },
+                                        flags: {
+                                            effectmacro: {
+                                                onTurnStart: {
+                                                    script: deckMacro
+                                                }
+                                            }
+                                        },
+                                        changes
                                     }
                                 }
-                            })
-                        } else {
-                            target.createEmbeddedDocuments(
-                                "ActiveEffect",
-                                [{
-                                    name: "I Am The Firewall",
-                                    duration: { "rounds": 1 },
-                                    icon: "assets/sr/icons/matrix/firewall.svg",
-                                    flags: {
-                                        effectmacro: {
-                                            onTurnStart:{
-                                                script: deckMacro
-                                            }
-                                        }
-                                    },
-                                    changes
-                                }]
-                            );
-                        }
-                    } else if(targets.includes(target.name)) {
-                        if (effect) {
-                            effect.update({ changes });
-                        } else {
-                            target.createEmbeddedDocuments(
-                                "ActiveEffect",
-                                [{
-                                    name: "I Am The Firewall",
-                                    icon: "assets/sr/icons/matrix/firewall.svg",
-                                    duration: { "rounds": 1 },
-                                    changes
-                                }]
-                            );
-                        };
-                    }
-                });
+                            }
+                        },
+                        {},
+                        {
+                            permanent: true, 
+                            comparisonKeys: {ActiveEffect: 'name'},
+                            overrides: {
+                                alwaysAcccept: true,
+                                suppressToast: true
+                            },
+                            description: "I Am The Firewall"
+                        });
+                } else if (targets.includes(element.name)) {
+                    console.log("adding effect to" + element.name);
+                    warpgate.mutate(element, {
+                            embedded: {
+                                ActiveEffect: {
+                                    "I Am The Firewall": {
+                                        description: "I Am The Firewall",
+                                        icon: "assets/sr/icons/matrix/firewall.svg",
+                                        duration: { "rounds": 1 },
+                                        changes
+                                    }
+                                }
+                            }
+                        },
+                        {},
+                        {
+                            permanent: true,
+                            comparisonKeys: { ActiveEffect: 'name'},
+                            overrides: {
+                                alwaysAcccept: true,
+                                suppressToast: true
+                            },
+                            description: "I Am The Firewall"
+                        });
+                    };
             });
+            console.log("all tokens edited");
         }
     };
     skillTest();
 }
 
-mainAsync();
+mainAsync()

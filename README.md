@@ -19,7 +19,7 @@ Discord names are used, github accounts are linked where known
     - not applying powers to created actor
 - [Swarm](Effect-Macros/catrone3/Swarm.js) (Effect Macro)
 - [Living Persona](Effect-Macros/catrone3/LivingPersona.js) (On Creation Effect Macro)
-- [I Am The Firewall](Macros/catrone3/iamthefirewall.js)
+- [I Am The Firewall](Macros/catrone3/iamthefirewall.js) (Needs Effect Macro and Warp Gate Modules)
 - [Rally](Macros/catrone3/rally.js)
 - [Calibration](Macros/catrone3/calibrate.js)
 
