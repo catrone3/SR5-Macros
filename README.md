@@ -14,7 +14,6 @@ Discord names are used, github accounts are linked where known
 - [remove-duplicate-items](Macros/catrone3/remove-duplicate-items.js)
     - has an issue getting every duplicate still, possible issue in string comparison
 - [Control-Rig](Effect-Macros/catrone3/Control-Rig) (Effect Macro)
-    - weapons do not get accuracy modified currently
 - [spirit summoning](Macros/catrone3/spirit-summoning.js)
     - not applying powers to created actor
 - [Swarm](Effect-Macros/catrone3/Swarm.js) (Effect Macro)
@@ -22,6 +21,8 @@ Discord names are used, github accounts are linked where known
 - [I Am The Firewall](Macros/catrone3/iamthefirewall.js) (Needs Effect Macro and Warp Gate Modules)
 - [Rally](Macros/catrone3/rally.js)
 - [Calibration](Macros/catrone3/calibrate.js)
+- [Player Skill Check](Macros/catrone3/playersSkillcheck.js) 
+    - guesses at the limit used 
 
 #### T.J.
 - [Armor Spell](Effect-Macros/TJonDiscord/ArmorSpell) (Effect Macro)

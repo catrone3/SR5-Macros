@@ -111,7 +111,7 @@ tokenList.forEach(element => {
                 console.log(element);
                 let target = element.actor;
                 let effect = target.effects.find(i => i.label === "I Am The Firewall");
-                if (element.name == decker.name) {
+                if (target.name == decker.name) {
                         warpgate.mutate(element, {
                             embedded: {
                                 ActiveEffect: {
