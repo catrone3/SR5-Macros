@@ -1,0 +1,43 @@
+{
+    "id": "SR5-Macros",
+    "title": "Useful macros for Shadowrun 5th Edition",
+    "description": "A collection of macros and effect macros for Shadowrun 5th Edition",
+    "author": "catrone3",
+    "version": "0.1.0",
+    "compatibility": {
+        "minimum": "10",
+        "verified": "11"
+    },
+    "packs":[
+        {
+        "name": "sr5-community-macros",
+        "label": "SR5-Community-Macros",
+        "system": "shadowrun5e",
+        "path": "packs/scripts.db",
+        "type": "macro"
+        }
+    ],
+    "relationships": {
+        "requires": [
+            {
+                "id": "effectmacro",
+                "type": "module",
+                "manifest": "https://github.com/krbz999/effectmacro/blob/main/module.json",
+                "compatibility": {
+                    "minimum": "11.0.1"
+                }
+            },
+            {
+                "id": "warpgate",
+                "type": "module",
+                "manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
+                "compatibility": {
+                    "minimum": "1.19.0"
+                }
+            }
+        ]
+    },
+    "system": "shadowrun5e",
+    "url": "https://github.com/catrone3/foundryvtt-shadowrunmacros",
+    "bugs": "https://github.com/catrone3/foundryvtt-shadowrunmacros/issues"
+}

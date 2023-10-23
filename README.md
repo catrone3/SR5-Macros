@@ -31,3 +31,8 @@ Discord names are used, github accounts are linked where known
 
 #### [Poetics](https://github.com/ThePoetics)
 - [Contacts creator](Macros/PoeticsonDiscord/contacts.js)
+
+
+#### Licenses
+Icons provided by 
+- The Noun Project https://thenounproject.com/legal/ under Creative Common Attribution License (CC BY 3.0)
