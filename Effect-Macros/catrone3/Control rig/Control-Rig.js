@@ -4,10 +4,10 @@ let rating = 0;
 //Check to see if the character has a control rig installed
 items.forEach(element => {
     if (element.name.startsWith("Control Rig")) {
-        rating = items[key].system.technology.rating;
+        rating = element.system.technology.rating;
     }
     else if (element.name.startsWith("Mind Over Machine")) {
-        rating = items[key].system.rating;
+        rating = element.system.rating;
     }
 });
 
