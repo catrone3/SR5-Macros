@@ -17,3 +17,5 @@ device.update({ "system.atts.att1.value": attack });
 device.update({ "system.atts.att2.value": sleaze });
 device.update({ "system.atts.att3.value": data_processing });
 device.update({ "system.atts.att4.value": firewall });
+
+ui.notifications.info("Living Persona Updated");

@@ -11,26 +11,27 @@ If you have ideas for macros that are missing that you would like to see, create
 Discord names are used, github accounts are linked where known
 
 #### [catrone3](https://github.com/catrone3)
-- [remove-duplicate-items](Macros/catrone3/remove-duplicate-items.js)
+- [remove-duplicate-items](src/Macros/catrone3/remove-duplicate-items.js)
     - has an issue getting every duplicate still, possible issue in string comparison
-- [Control-Rig](Effect-Macros/catrone3/Control-Rig) (Effect Macro)
-    - weapons do not get accuracy modified currently
-- [spirit summoning](Macros/catrone3/spirit-summoning.js)
+- [Control-Rig](src/Effect-Macros/catrone3/Control-Rig.js) (Effect Macro)
+- [spirit summoning](src/Macros/catrone3/spirit-summoning.js)
     - not applying powers to created actor
-- [Swarm](Effect-Macros/catrone3/Swarm.js) (Effect Macro)
-- [Living Persona](Effect-Macros/catrone3/LivingPersona.js) (On Creation Effect Macro)
-- [I Am The Firewall](Macros/catrone3/iamthefirewall.js) (Needs Effect Macro and Warp Gate Modules)
-- [Rally](Macros/catrone3/rally.js)
-- [Calibration](Macros/catrone3/calibrate.js)
+- [Swarm](src/Effect-Macros/catrone3/Swarm.js) (Effect Macro)
+- [Living Persona](src/Effect-Macros/catrone3/LivingPersona.js) (On Creation Effect Macro)
+- [I Am The Firewall](src/Macros/catrone3/iamthefirewall.js) (Needs Effect Macro and Warp Gate Modules)
+- [Rally](src/Macros/catrone3/rally.js)
+- [Calibration](src/Macros/catrone3/calibrate.js)
+- [Player Skill Check](src/Macros/catrone3/playersSkillcheck.js) 
+    - guesses at the limit used 
 
 #### T.J.
-- [Armor Spell](Effect-Macros/TJonDiscord/ArmorSpell) (Effect Macro)
-- [Increase Refleces](Effect-Macros/TJonDiscord/IncreaseReflexes) (Effect Macro)
-- [pysche](Effect-Macros/TJonDiscord/psyche) (Effect Macro)
-- [Sustained Spells](Effect-Macros/TJonDiscord/SustainedSpells) (Effect Macro)
+- [Armor Spell](src/Effect-Macros/TJonDiscord/ArmorSpell) (Effect Macro)
+- [Increase Refleces](src/Effect-Macros/TJonDiscord/IncreaseReflexes) (Effect Macro)
+- [pysche](src/Effect-Macros/TJonDiscord/psyche) (Effect Macro)
+- [Sustained Spells](src/Effect-Macros/TJonDiscord/SustainedSpells) (Effect Macro)
 
 #### [Poetics](https://github.com/ThePoetics)
-- [Contacts creator](Macros/PoeticsonDiscord/contacts.js)
+- [Contacts creator](src/Macros/PoeticsonDiscord/contacts.js)
 
 
 #### Licenses

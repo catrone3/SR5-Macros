@@ -3,11 +3,11 @@ let items = player.items;
 let rating = 0;
 //Check to see if the character has a control rig installed
 items.forEach(element => {
-    if (element.name.startsWith("Control Rig")) {
-        rating = items[key].system.technology.rating;
+    if (element.name == "Control Rig") {
+        rating = element.system.technology.rating;
     }
-    else if (element.name.startsWith("Mind Over Machine")) {
-        rating = items[key].system.rating;
+    else if (element.name == "Mind Over Machine") {
+        rating = element.system.rating;
     }
 });
 
@@ -23,3 +23,5 @@ items_list.forEach(element => {
         element.update({ "system.action.skill": "automatics" });
     }
 });
+
+ui.notifications.info("Control Rig Bonus Removed");

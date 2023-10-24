@@ -9,4 +9,6 @@ effect.update({
     label: "Improved Reflexes",
     name: "Improved Reflexes",
     changes
-  });
+});
+
+ui.notifications.info("Improved Reflexes Applied");

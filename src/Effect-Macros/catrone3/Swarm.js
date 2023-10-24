@@ -36,3 +36,5 @@ let d = new Dialog({
 });
 
 d.render(true);
+
+ui.notifications.info("Swarm Applied");

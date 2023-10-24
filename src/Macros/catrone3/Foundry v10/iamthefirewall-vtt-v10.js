@@ -104,14 +104,14 @@ async function mainAsync() {
 let tokenList = canvas.tokens.documentCollection
 tokenList.forEach(element => {
     if (targets.includes(element.name)) {
-        warpgate.mutate(element,{embedded: {ActiveEffect: {"I Am The Firewall": warpgate.CONST.DELETE}}}, {}, {permanent: true,comparisonKeys: {ActiveEffect: 'name'}});
+        warpgate.mutate(element,{embedded: {ActiveEffect: {"I Am The Firewall": warpgate.CONST.DELETE}}}, {}, {permanent: true,comparisonKeys: {ActiveEffect: 'label'}});
     }
 });`;
             tokenList.forEach(element => {
                 console.log(element);
                 let target = element.actor;
                 let effect = target.effects.find(i => i.label === "I Am The Firewall");
-                if (element.name == decker.name) {
+                if (target.name == decker.name) {
                         warpgate.mutate(element, {
                             embedded: {
                                 ActiveEffect: {
@@ -134,7 +134,7 @@ tokenList.forEach(element => {
                         {},
                         {
                             permanent: true, 
-                            comparisonKeys: {ActiveEffect: 'name'},
+                            comparisonKeys: {ActiveEffect: 'label'},
                             overrides: {
                                 alwaysAcccept: true,
                                 suppressToast: true
@@ -158,7 +158,7 @@ tokenList.forEach(element => {
                         {},
                         {
                             permanent: true,
-                            comparisonKeys: { ActiveEffect: 'name'},
+                            comparisonKeys: { ActiveEffect: 'label'},
                             overrides: {
                                 alwaysAcccept: true,
                                 suppressToast: true

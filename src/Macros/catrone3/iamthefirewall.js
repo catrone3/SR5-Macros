@@ -111,7 +111,7 @@ tokenList.forEach(element => {
                 console.log(element);
                 let target = element.actor;
                 let effect = target.effects.find(i => i.label === "I Am The Firewall");
-                if (element.name == decker.name) {
+                if (target.name == decker.name) {
                         warpgate.mutate(element, {
                             embedded: {
                                 ActiveEffect: {
@@ -134,7 +134,7 @@ tokenList.forEach(element => {
                         {},
                         {
                             permanent: true, 
-                            comparisonKeys: {ActiveEffect: 'label'},
+                            comparisonKeys: {ActiveEffect: 'name'},
                             overrides: {
                                 alwaysAcccept: true,
                                 suppressToast: true
@@ -158,7 +158,7 @@ tokenList.forEach(element => {
                         {},
                         {
                             permanent: true,
-                            comparisonKeys: { ActiveEffect: 'label'},
+                            comparisonKeys: { ActiveEffect: 'name'},
                             overrides: {
                                 alwaysAcccept: true,
                                 suppressToast: true
@@ -171,6 +171,7 @@ tokenList.forEach(element => {
         }
     };
     skillTest();
+    ui.notifications.notify("I Am The Firewall Applied")
 }
 
 mainAsync()
