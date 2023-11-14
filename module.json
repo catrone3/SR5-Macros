@@ -1,11 +1,11 @@
 {
     "id": "SR5-Compendium",
-    "title": "SR5Compendium",
+    "title": "SR5-Compendium",
     "description": "A collection of macros and item effects for Shadowrun 5th Edition",
     "author": "catrone3",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "compatibility": {
-        "minimum": "10",
+        "minimum": "11",
         "verified": "11"
     },
     "packs": [
@@ -13,15 +13,23 @@
             "name": "sr5-community-macros",
             "label": "SR5-Community-Macros",
             "system": "shadowrun5e",
-            "path": "packs/scripts.db",
-            "type": "macro"
+            "path": "packs/SR5-Community-Macros",
+            "type": "Macro",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
         },
         {
             "name": "sr5-community-items",
             "label": "SR5-Community-Items",
             "system": "shadowrun5e",
-            "path": "packs/items.db",
-            "type": "item"
+            "path": "./packs/SR5-Community-Items",
+            "type": "Item",
+            "ownership": {
+                "PLAYER": "OBSERVER",
+                "ASSISTANT": "OWNER"
+            }
         }
     ],
     "relationships": {
@@ -56,7 +64,7 @@
     "url": "https://github.com/catrone3/SR5-Macros",
     "bugs": "https://github.com/catrone3/SR5-Macros/issues",
     "readme": "https://raw.githubusercontent.com/catrone3/SR5-Macros/main/README.md",
-    "manifest": "https://raw.githubusercontent.com/catrone3/SR5-Macros/issue/9/module.json",
+    "manifest": "https://raw.githubusercontent.com/catrone3/SR5-Macros/latest/module.json",
     "download": "https://github.com/catrone3/SR5-Macros/archive/refs/latest/module.zip",
     "changelog": "https://github.com/catrone3/SR5-Macros/releases",
     "license": "MIT",
