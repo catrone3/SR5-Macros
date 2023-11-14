@@ -1,2 +1,3 @@
 # Ignore Artifacts:
 temp/*
+"src/Macros/catrone3/Wireless Toggle/*"
