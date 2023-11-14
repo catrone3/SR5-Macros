@@ -9,10 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      
+
       # Create zip file
       - run: zip -r ./module.zip module.json LICENSE packs/ README.md
-      
+
       # Create a release for this specific version.
       - name: Update Release with Files
         if: !github.event.release.prerelease

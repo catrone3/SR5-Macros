@@ -10,7 +10,6 @@ let firewall = player.system.attributes.willpower.value;
 let items_list = actor.items._source;
 let actor_items = actor.items;
 
-
 var device = actor_items.getName("Living Persona");
 device.update({ "system.technology.rating": device_rating });
 device.update({ "system.atts.att1.value": attack });

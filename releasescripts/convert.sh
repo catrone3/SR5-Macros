@@ -8,7 +8,14 @@ rm -rf $datadir/SR5-Compendium
 rm -rf ./packs
 rm -rf ./releasescripts/packs
 mkdir -p $datadir/SR5-Compendium
-node ./releasescripts/convert.js
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+    node ./releasescripts/convert-linux.js
+elif [[ "$OSTYPE" == "win32"* ]]; then
+    node ./releasescripts/convert-windows.js
+elif [[ "$OSTYPE" == "msys" ]]; then
+    node ./releasescripts/convert-windows.js
+fi
+
 
 cp -R ./releasescripts/packs $datadir/SR5-Compendium/
 cp module.json $datadir/SR5-Compendium/
