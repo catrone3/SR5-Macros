@@ -1,5 +1,4 @@
-name: Convert Macros
-
+name: Linter
 on:
   pull_request:
     branches:
