@@ -1,11 +1,18 @@
 # foundryvtt-shadowrunmacros
 Macros I have made or found for use in FoundryVTT. Any found macros will have references in the README if I can find the source of it again.
 
+### Installing
+copy the following link and enter it into the Manifest URL in the module install window
+
+
 ### Contributing and new Macros
-If you wish to contribute yourself to this repo create a PR with your changes. 
+If you wish to contribute yourself to this repo, please follow the file structure that is used as listed below before making a PR with the changes
+- Effect Macro
+{item type}/{item name}/effect.js
+- Macros
+{Contributor name}/{macroname}.js
 
 If you have ideas for macros that are missing that you would like to see, create an issue for it and go into detail about what you want the macro to do.
-
 
 ### Contributors
 Discord names are used, github accounts are linked where known
@@ -31,11 +38,6 @@ Discord names are used, github accounts are linked where known
 
 
 #### Contributing
-If you wish to contribute please try to follow the file structure that is used as listed below
-- Effect Macro
-{item type}/{item name}/effect.js
-- Macros
-{Contributor name}/{macroname}.js
 
 #### Licenses
 Icons provided by 
