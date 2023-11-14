@@ -11,11 +11,7 @@ If you have ideas for macros that are missing that you would like to see, create
 Discord names are used, github accounts are linked where known
 
 #### [catrone3](https://github.com/catrone3)
-- [remove-duplicate-items](src/Macros/catrone3/remove-duplicate-items.js)
-    - has an issue getting every duplicate still, possible issue in string comparison
 - [Control-Rig](src/Effect-Macros/catrone3/Control-Rig.js) (Effect Macro)
-- [spirit summoning](src/Macros/catrone3/spirit-summoning.js)
-    - not applying powers to created actor
 - [Swarm](src/Effect-Macros/catrone3/Swarm.js) (Effect Macro)
 - [Living Persona](src/Effect-Macros/catrone3/LivingPersona.js) (On Creation Effect Macro)
 - [I Am The Firewall](src/Macros/catrone3/iamthefirewall.js) (Needs Effect Macro and Warp Gate Modules)
@@ -33,6 +29,13 @@ Discord names are used, github accounts are linked where known
 #### [Poetics](https://github.com/ThePoetics)
 - [Contacts creator](src/Macros/PoeticsonDiscord/contacts.js)
 
+
+#### Contributing
+If you wish to contribute please try to follow the file structure that is used as listed below
+- Effect Macro
+{item type}/{item name}/effect.js
+- Macros
+{Contributor name}/{macroname}.js
 
 #### Licenses
 Icons provided by 

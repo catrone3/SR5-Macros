@@ -13,7 +13,7 @@ jobs:
             - name: Convert Macros
               run: |
                     npm install
-                    node convert.js
+                    node ./releasescripts/convert.js
             - name: Commit changes
               run: |
                     git config --local user.email "
