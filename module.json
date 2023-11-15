@@ -35,17 +35,8 @@
   "relationships": {
     "requires": [
       {
-        "id": "effectmacro",
-        "type": "module",
-        "manifest": "https://github.com/krbz999/effectmacro/blob/main/module.json",
-        "compatibility": {
-          "minimum": "11.0.1"
-        }
-      },
-      {
         "id": "warpgate",
         "type": "module",
-        "manifest": "https://github.com/trioderegion/warpgate/releases/latest/download/module.json",
         "compatibility": {
           "minimum": "1.19.0"
         }
@@ -53,9 +44,15 @@
       {
         "id": "requestor",
         "type": "module",
-        "manifest": "https://github.com/krbz999/requestor/releases/latest/download/module.json",
         "compatibility": {
           "minimum": "11.0.2"
+        }
+      },
+      {
+        "id": "effectmacro",
+        "type": "module",
+        "compatibility": {
+          "minimum": "11.0.3"
         }
       }
     ]
