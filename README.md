@@ -25,25 +25,25 @@ Discord names are used, github accounts are linked where known
 
 #### [catrone3](https://github.com/catrone3)
 
-- [Control-Rig](src/Effect-Macros/catrone3/Control-Rig.js) (Effect Macro)
-- [Swarm](src/Effect-Macros/catrone3/Swarm.js) (Effect Macro)
-- [Living Persona](src/Effect-Macros/catrone3/LivingPersona.js) (On Creation Effect Macro)
-- [I Am The Firewall](src/Macros/catrone3/iamthefirewall.js) (Needs Effect Macro and Warp Gate Modules)
-- [Rally](src/Macros/catrone3/rally.js)
-- [Calibration](src/Macros/catrone3/calibrate.js)
-- [Player Skill Check](src/Macros/catrone3/playersSkillcheck.js)
+- Control-Rig
+- Swarm
+- Living Persona
+- I Am The Firewall
+- Rally
+- Calibration
+- Player Skill Check
   - guesses at the limit used
 
 #### T.J.
 
-- [Armor Spell](src/Effect-Macros/TJonDiscord/ArmorSpell) (Effect Macro)
-- [Increase Refleces](src/Effect-Macros/TJonDiscord/IncreaseReflexes) (Effect Macro)
-- [pysche](src/Effect-Macros/TJonDiscord/psyche) (Effect Macro)
-- [Sustained Spells](src/Effect-Macros/TJonDiscord/SustainedSpells) (Effect Macro)
+- [Armor Spell](src/NotinItems/TJ/ArmorSpell) (Effect Macro)
+- [Increase Refleces](src/NotinItems/TJ/IncreaseReflexes/) (Effect Macro)
+- [pysche](src/NotinItems/TJ/psyche/) (Effect Macro)
+- [Sustained Spells](src/NotinItems/TJ/SustainedSpells/) (Effect Macro)
 
 #### [Poetics](https://github.com/ThePoetics)
 
-- [Contacts creator](src/Macros/PoeticsonDiscord/contacts.js)
+- [Contacts creator](src/Macros/PoeticsonDiscord/Contacts/contacts.js)
 
 #### Contributing
 
