@@ -6,7 +6,7 @@ Macros I have made or found for use in FoundryVTT. Any found macros will have re
 
 copy the following link and enter it into the Manifest URL in the module install window
 
-`https://raw.githubusercontent.com/catrone3/SR5-Macros/latest/module.json`
+`https://github.com/catrone3/SR5-Macros/releases/latest/download/module.json`
 
 ### Contributing and new Macros
 
