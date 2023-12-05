@@ -87,8 +87,8 @@ walk("./src/Effect-Macros", function (err, results) {
   var type = "";
   var name = "";
   var filecontents = "";
-  var script = {};
   results.forEach((file) => {
+    var script = {};
     if (file.endsWith(".js")) {
       if (file.endsWith("cleanup.js")) return;
       relative = path.relative("./src/Effect-Macros", file);
@@ -96,16 +96,30 @@ walk("./src/Effect-Macros", function (err, results) {
       type = types[relative.split("/")[0]];
       name = relative.split("/")[1];
       filecontents = convertFile(file);
-      if (type == "device" || type == "equipment") {
-        wireless = true;
+      if (scripts.filter(e => e.name === name).length > 0) {
+        console.log("duplicate");
+        var index = scripts.findIndex(e => e.name === name);
+        if (file.endsWith("cleanup.js")) {
+          scripts[index].cleanup = filecontents;
+        } else {
+          scripts[index].script = filecontents;
+        }
+      } else {
+        if (file.endsWith("cleanup.js")) {
+          script.cleanup = filecontents;
+        } else {
+          script.script = filecontents;
+        }
+        if (type == "device" || type == "equipment") {
+          wireless = true;
+        }
+        script.name = name;
+        script.type = type;
+        script.wireless = wireless;
+        console.log(script.name)
+
+        scripts.push(script);
       }
-      script = {
-        script: filecontents,
-        name: name,
-        type: type,
-        wireless: wireless,
-      };
-      scripts.push(script);
     }
   });
   createItems(scripts);
@@ -176,6 +190,7 @@ function createItems(scripts) {
     var img = name.toLowerCase().replace(/ /g, "_");
     var system = systems[type];
     var effect = scripts[i].script;
+    var cleanup = scripts[i].cleanup;
     switch (type) {
       case "Adept Powers":
         folder = "xcAlaQ05nmdn8TPj"
@@ -211,6 +226,9 @@ function createItems(scripts) {
               },
               onToggle: {
                 script: effect,
+              },
+              onDisable: {
+                script: cleanup,
               },
             },
           },

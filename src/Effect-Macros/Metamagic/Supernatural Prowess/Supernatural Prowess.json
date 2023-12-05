@@ -1,0 +1,39 @@
+{
+    "name": "Supernatural Prowess",
+    "_id": "fxzwzC3d1SVn5AaL",
+    "img": "icons/svg/item-bag.svg",
+    "sort": 0,
+    "ownership": {
+        "default": 2
+    },
+    "folder": "",
+    "system": {},
+    "effects": [
+        {
+            "_id": "XJnftzJqb4sezt8m",
+            "name": "Supernatural Prowess",
+            "transfer": true,
+            "flags": {
+                "effectmacro": {
+                    "onCreate": {
+                        "script": ""
+                    },
+                    "onToggle": {
+                        "script": ""
+                    }
+                }
+            },
+            "_key": "!items.effects!fxzwzC3d1SVn5AaL.XJnftzJqb4sezt8m"
+        }
+    ],
+    "flags": {},
+    "_stats": {
+        "systemId": "shadowrun5e",
+        "systemVersion": "0.14.1",
+        "coreVersion": "11.313",
+        "createdTime": 1696022797597,
+        "modifiedTime": 1698360878446,
+        "lastModifiedBy": "ltL8cFp0swj2NfHd"
+    },
+    "_key": "!items!fxzwzC3d1SVn5AaL"
+}

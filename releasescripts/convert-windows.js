@@ -78,50 +78,58 @@ walk("./src/Macros", function (err, results) {
   createFile(scripts);
 });
 
-walk("./src/Effect-Macros", function (err, results) {
-  if (err) throw err;
-  var scripts = [];
-  var wireless = false;
-  var relative = "";
-  var type = "";
-  var name = "";
-  var filecontents = "";
-  results.forEach((file) => {
-    var script = {};
-    if (file.endsWith(".js")) {
-      relative = path.relative("./src/Effect-Macros", file);
-      type = relative.split("\\")[0];
-      name = relative.split("\\")[1];
-      filecontents = convertFile(file);
-      console.log(scripts.filter(e => e.name === name).length > 0);
-      if (scripts.filter(e => e.name === name).length > 0) {
-        console.log("duplicate");
-        var index = scripts.findIndex(e => e.name === name);
-        if (file.endsWith("cleanup.js")) {
-          scripts[index].cleanup = filecontents;
-        } else {
-          scripts[index].script = filecontents;
-        }
-      } else {
-        if (file.endsWith("cleanup.js")) {
-          script.cleanup = filecontents;
-        } else {
-          script.script = filecontents;
-        }
-        if (type == "device" || type == "equipment") {
-          wireless = true;
-        }
-        script.name = name;
-        script.type = type;
-        script.wireless = wireless;
-        console.log(script.name)
-
-        scripts.push(script);
-      }
+function itemwalk(directory, callback) {
+  fs.readdirSync(directory).forEach((file) => {
+    const filePath = path.join(directory, file);
+    if (fs.statSync(filePath).isDirectory()) {
+      itemwalk(filePath, callback);
+    } else {
+      console.log(filePath);
+      callback(filePath);
     }
   });
-  createItems(scripts);
-});
+}
+
+function processFile(jsonFilePath) {
+  try{
+  if (jsonFilePath.endsWith(".json")) {
+    const jsonContent = convertFile(jsonFilePath);
+    console.log(jsonContent);
+    // Get the folder of the JSON file
+    const folder = path.dirname(jsonFilePath);
+    console.log("Creating Item Jsons")
+    // Read and add contents of each JavaScript file in the folder
+    fs.readdirSync(folder).forEach((file) => {
+      const jsFilePath = path.join(folder, file);
+      if (jsFilePath.endsWith(".js")) {
+        const key = path.basename(jsFilePath, ".js");
+        try {
+          const jsContent = convertFile(jsFilePath);
+          switch (path.basename(jsFilePath, ".js")) {
+            case "effect":
+              jsonContent.effects[0].flags.effectmacro.onCreate.script = jsContent;
+              jsonContent.effects[0].flags.effectmacro.onToggle.script = jsContent;
+              break;
+            case "cleanup":
+              jsonContent.effects[0].flags.effectmacro.onDisable.script = jsContent;
+              break;
+            default:
+              error('Unknown effect type')
+          } 
+        } catch (err) {
+          console.error(`Error reading ${jsFilePath}: ${err}`);
+        }
+      }
+    });
+    // Write the new JSON file
+    console.log("Writing file:"+jsonContent.name);
+    writeFile(jsonContent, "SR5-Community-Items", jsonContent.name);
+  }
+  }
+  catch(err){
+    console.error(`Error reading ${jsonFilePath}: ${err}`);
+  }
+};
 
 function convertFile(file) {
   return fs.readFileSync(file, "utf8");
@@ -178,82 +186,5 @@ function createFile(scripts) {
   }
 }
 
-function createItems(scripts) {
-  console.log("Creating Item Jsons");
-  for (i = 0; i < scripts.length; i++) {
-    console.log("Making Item:"+scripts[i].name)
-    var type = scripts[i].type;
-    var itemid = randomID(16);
-    var effectid = randomID(16);
-    var name = scripts[i].name;
-    var img = name.toLowerCase().replace(/ /g, "_");
-    var system = systems[type];
-    var folder = "";
-    var effect = scripts[i].script;
-    console.log(type);
-    switch (type) {
-      case "Adept Powers":
-        folder = "xcAlaQ05nmdn8TPj"
-        break;
-      case "Foci":
-        folder = "lMjzmwRhJ89aIxP0"
-        break;
-      case "Metamagic":
-        folder = "kxqhWPhMqlxlwnnr"
-        break;
-      case "Devices": 
-        folder = "mDfNQxEFSGTP5DJm"
-        break;
-      case "Programs":
-        folder = "2q9jU5X0hX8sJZqY"
-        break;
-      default:
-        folder = ""
-    }
-    var filecontents = {
-      name: name,
-      type: types[type],
-      _id: itemid,
-      img: `icons/svg/item-bag.svg`,
-      sort: 0,
-      ownership: {
-        default: 2,
-      },
-      folder: folder,
-      system: system,
-      effects: [
-        {
-          _id: effectid,
-          name: name,
-          transfer: true,
-          flags: {
-            effectmacro: {
-              onCreate: {
-                script: effect,
-              },
-              onToggle: {
-                script: effect,
-              },
-            },
-          },
-          _key: "!items.effects!" + itemid + "." + effectid,
-        },
-      ],
-      flags: {},
-      _stats: {
-        systemId: "shadowrun5e",
-        systemVersion: "0.14.1",
-        coreVersion: "11.313",
-        createdTime: 1696022797597,
-        modifiedTime: 1698360878446,
-        lastModifiedBy: "ltL8cFp0swj2NfHd",
-      },
-      _key: "!items!" + itemid,
-    };
-    writeFile(
-      JSON.stringify(filecontents, null, 4),
-      "SR5-Community-Items",
-      name,
-    );
-  }
-}
+const directoryPath = './src/Effect-Macros/Programs';
+itemwalk(directoryPath, processFile);

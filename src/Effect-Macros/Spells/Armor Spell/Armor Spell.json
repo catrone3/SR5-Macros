@@ -1,0 +1,39 @@
+{
+    "name": "Armor Spell",
+    "_id": "4zE5ZOZQKx0fODj9",
+    "img": "icons/svg/item-bag.svg",
+    "sort": 0,
+    "ownership": {
+        "default": 2
+    },
+    "folder": "",
+    "system": {},
+    "effects": [
+        {
+            "_id": "Ke8W4461puBJtfrF",
+            "name": "Armor Spell",
+            "transfer": true,
+            "flags": {
+                "effectmacro": {
+                    "onCreate": {
+                        "script": ""
+                    },
+                    "onToggle": {
+                        "script": ""
+                    }
+                }
+            },
+            "_key": "!items.effects!4zE5ZOZQKx0fODj9.Ke8W4461puBJtfrF"
+        }
+    ],
+    "flags": {},
+    "_stats": {
+        "systemId": "shadowrun5e",
+        "systemVersion": "0.14.1",
+        "coreVersion": "11.313",
+        "createdTime": 1696022797597,
+        "modifiedTime": 1698360878446,
+        "lastModifiedBy": "ltL8cFp0swj2NfHd"
+    },
+    "_key": "!items!4zE5ZOZQKx0fODj9"
+}

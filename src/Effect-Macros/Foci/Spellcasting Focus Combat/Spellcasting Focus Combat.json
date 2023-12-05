@@ -1,0 +1,39 @@
+{
+    "name": "Spellcasting Focus Combat",
+    "_id": "p4uZfyLRdexDYMOt",
+    "img": "icons/svg/item-bag.svg",
+    "sort": 0,
+    "ownership": {
+        "default": 2
+    },
+    "folder": "",
+    "system": {},
+    "effects": [
+        {
+            "_id": "NibYhLA9uWFQZ4F4",
+            "name": "Spellcasting Focus Combat",
+            "transfer": true,
+            "flags": {
+                "effectmacro": {
+                    "onCreate": {
+                        "script": ""
+                    },
+                    "onToggle": {
+                        "script": ""
+                    }
+                }
+            },
+            "_key": "!items.effects!p4uZfyLRdexDYMOt.NibYhLA9uWFQZ4F4"
+        }
+    ],
+    "flags": {},
+    "_stats": {
+        "systemId": "shadowrun5e",
+        "systemVersion": "0.14.1",
+        "coreVersion": "11.313",
+        "createdTime": 1696022797597,
+        "modifiedTime": 1698360878446,
+        "lastModifiedBy": "ltL8cFp0swj2NfHd"
+    },
+    "_key": "!items!p4uZfyLRdexDYMOt"
+}

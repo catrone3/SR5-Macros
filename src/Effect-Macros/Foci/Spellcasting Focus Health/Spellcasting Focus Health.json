@@ -1,0 +1,39 @@
+{
+    "name": "Spellcasting Focus Health",
+    "_id": "uJc9CHTee1RRuSdv",
+    "img": "icons/svg/item-bag.svg",
+    "sort": 0,
+    "ownership": {
+        "default": 2
+    },
+    "folder": "",
+    "system": {},
+    "effects": [
+        {
+            "_id": "XKE6My9bw4lSBdgg",
+            "name": "Spellcasting Focus Health",
+            "transfer": true,
+            "flags": {
+                "effectmacro": {
+                    "onCreate": {
+                        "script": ""
+                    },
+                    "onToggle": {
+                        "script": ""
+                    }
+                }
+            },
+            "_key": "!items.effects!uJc9CHTee1RRuSdv.XKE6My9bw4lSBdgg"
+        }
+    ],
+    "flags": {},
+    "_stats": {
+        "systemId": "shadowrun5e",
+        "systemVersion": "0.14.1",
+        "coreVersion": "11.313",
+        "createdTime": 1696022797597,
+        "modifiedTime": 1698360878446,
+        "lastModifiedBy": "ltL8cFp0swj2NfHd"
+    },
+    "_key": "!items!uJc9CHTee1RRuSdv"
+}
