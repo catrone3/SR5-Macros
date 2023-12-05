@@ -1,8 +1,7 @@
-const { create } = require("domain");
 const fs = require("fs");
 var path = require("path");
-var crypto = require("crypto");
-const { type } = require("os");
+const chardet = require('chardet');
+const iconv = require('iconv-lite');
 
 const types = {
   Action: "action",
@@ -84,55 +83,87 @@ function itemwalk(directory, callback) {
     if (fs.statSync(filePath).isDirectory()) {
       itemwalk(filePath, callback);
     } else {
-      console.log(filePath);
+      console.log(`Processing file: ${filePath}`);
       callback(filePath);
     }
   });
 }
 
 function processFile(jsonFilePath) {
-  try{
-  if (jsonFilePath.endsWith(".json")) {
-    const jsonContent = convertFile(jsonFilePath);
-    console.log(jsonContent);
-    // Get the folder of the JSON file
-    const folder = path.dirname(jsonFilePath);
-    console.log("Creating Item Jsons")
-    // Read and add contents of each JavaScript file in the folder
-    fs.readdirSync(folder).forEach((file) => {
-      const jsFilePath = path.join(folder, file);
-      if (jsFilePath.endsWith(".js")) {
-        const key = path.basename(jsFilePath, ".js");
-        try {
-          const jsContent = convertFile(jsFilePath);
-          switch (path.basename(jsFilePath, ".js")) {
-            case "effect":
-              jsonContent.effects[0].flags.effectmacro.onCreate.script = jsContent;
-              jsonContent.effects[0].flags.effectmacro.onToggle.script = jsContent;
-              break;
-            case "cleanup":
-              jsonContent.effects[0].flags.effectmacro.onDisable.script = jsContent;
-              break;
-            default:
-              error('Unknown effect type')
-          } 
-        } catch (err) {
-          console.error(`Error reading ${jsFilePath}: ${err}`);
-        }
-      }
-    });
-    // Write the new JSON file
-    console.log("Writing file:"+jsonContent.name);
-    writeFile(jsonContent, "SR5-Community-Items", jsonContent.name);
-  }
-  }
-  catch(err){
-    console.error(`Error reading ${jsonFilePath}: ${err}`);
-  }
-};
+  try {
+    if (jsonFilePath && jsonFilePath.endsWith && jsonFilePath.endsWith(".json")) {
+      var jsonContent = JSON.parse(convertFile(jsonFilePath));
+      console.log(jsonContent.name);
 
-function convertFile(file) {
-  return fs.readFileSync(file, "utf8");
+      if (jsonContent && jsonContent.effects && Array.isArray(jsonContent.effects) && jsonContent.effects.length > 0) {
+        const effectIndex = 0; // Assuming there is a single entry in the effects array
+        
+        // Check if the flags structure exists
+        if (!jsonContent.effects[effectIndex]) {
+          console.error(`Effects array does not have an entry at index ${effectIndex} in file: ${jsonFilePath}`);
+          return;
+        }
+
+        if (!jsonContent.effects[effectIndex].flags) {
+          jsonContent.effects[effectIndex].flags = { effectmacro: {} };
+        }
+
+        // Get the folder of the JSON file
+        const folder = path.dirname(jsonFilePath);
+        console.log("Creating Item Jsons")
+        // Read and add contents of each JavaScript file in the folder
+        fs.readdirSync(folder).forEach((file) => {
+          const jsFilePath = path.join(folder, file);
+          if (jsFilePath.endsWith(".js")) {
+            const key = path.basename(jsFilePath, ".js");
+            try {
+              const jsContent = convertFile(jsFilePath);
+
+              switch (key) {
+                case "effect":
+                  jsonContent.effects[effectIndex].flags.effectmacro.onCreate.script = jsContent;
+                  jsonContent.effects[effectIndex].flags.effectmacro.onToggle.script = jsContent;
+                  break;
+                case "cleanup":
+                  jsonContent.effects[effectIndex].flags.effectmacro.onDisable.script = jsContent;
+                  break;
+                default:
+                  console.error('Unknown effect type');
+              } 
+            } catch (err) {
+              console.error(`Error reading ${jsFilePath}: ${err}`);
+            }
+          }
+        });
+
+        // Write the new JSON file
+        console.log("Writing file:" + jsonContent.name);
+        jsonContent = JSON.stringify(jsonContent, null, 4);
+        writeFile(jsonContent, "SR5-Community-Items", jsonContent.name);
+      } else {
+        console.error(`Effects array is empty in file: ${jsonFilePath}`);
+      }
+    } else {
+      console.error(`Invalid jsonFilePath: ${jsonFilePath}`);
+    }
+  } catch (error) {
+    console.error(`Error processing file: ${jsonFilePath}`, error);
+  }
+}
+
+function convertFile(filePath) {
+  const buffer = fs.readFileSync(filePath);
+  let detectedEncoding = chardet.detect(buffer);
+
+  // If chardet cannot detect the encoding, default to binary
+  if (!detectedEncoding) {
+    detectedEncoding = 'binary';
+  }
+
+  // Use iconv-lite to convert to UTF-8
+  const utf8Content = iconv.decode(buffer, detectedEncoding);
+
+  return utf8Content;
 }
 
 function writeFile(file, folder, name) {
@@ -186,5 +217,5 @@ function createFile(scripts) {
   }
 }
 
-const directoryPath = './src/Effect-Macros/Programs';
+const directoryPath = './src/Effect-Macros';
 itemwalk(directoryPath, processFile);
