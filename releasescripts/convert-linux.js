@@ -108,7 +108,7 @@ walk("./src/Effect-Macros", function (err, results) {
       scripts.push(script);
     }
   });
-  createItemsFile(scripts);
+  createItems(scripts);
 });
 
 function convertFile(file) {
@@ -176,19 +176,15 @@ function createItems(scripts) {
     var img = name.toLowerCase().replace(/ /g, "_");
     var system = systems[type];
     var effect = scripts[i].script;
-    switch (scripts[i].type) {
+    switch (type) {
       case "Adept Powers":
         folder = "xcAlaQ05nmdn8TPj"
-        break;
       case "Foci":
         folder = "lMjzmwRhJ89aIxP0"
-        break;
       case "Metamagic":
         folder = "kxqhWPhMqlxlwnnr"
-        break;
       case "Devices": 
         folder = "mDfNQxEFSGTP5DJm"
-        break;
       default:
         folder = ""
     }

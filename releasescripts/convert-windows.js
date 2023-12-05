@@ -86,16 +86,22 @@ walk("./src/Effect-Macros", function (err, results) {
   var type = "";
   var name = "";
   var filecontents = "";
-  var script = {};
   results.forEach((file) => {
+    var script = {};
     if (file.endsWith(".js")) {
       relative = path.relative("./src/Effect-Macros", file);
       type = relative.split("\\")[0];
       name = relative.split("\\")[1];
       filecontents = convertFile(file);
-      if (scripts.includes(name)) {
+      console.log(scripts.filter(e => e.name === name).length > 0);
+      if (scripts.filter(e => e.name === name).length > 0) {
         console.log("duplicate");
-        scripts.indexOf(name).script = filecontents;
+        var index = scripts.findIndex(e => e.name === name);
+        if (file.endsWith("cleanup.js")) {
+          scripts[index].cleanup = filecontents;
+        } else {
+          scripts[index].script = filecontents;
+        }
       } else {
         if (file.endsWith("cleanup.js")) {
           script.cleanup = filecontents;
@@ -108,8 +114,10 @@ walk("./src/Effect-Macros", function (err, results) {
         script.name = name;
         script.type = type;
         script.wireless = wireless;
+        console.log(script.name)
+
+        scripts.push(script);
       }
-      scripts.push(script);
     }
   });
   createItems(scripts);
@@ -138,8 +146,9 @@ function writeFile(file, folder, name) {
 function createFile(scripts) {
   var uuid = "";
   var author = randomID(16);
+  console.log("Creating Script Jsons")
   for (i = 0; i < scripts.length; i++) {
-    console.log(scripts[i].name);
+    console.log("Making file:"+scripts[i].name);
     uuid = randomID(16);
     var name = scripts[i].name;
     var filecontents = {
@@ -170,16 +179,19 @@ function createFile(scripts) {
 }
 
 function createItems(scripts) {
+  console.log("Creating Item Jsons");
   for (i = 0; i < scripts.length; i++) {
+    console.log("Making Item:"+scripts[i].name)
     var type = scripts[i].type;
     var itemid = randomID(16);
     var effectid = randomID(16);
     var name = scripts[i].name;
-    console.log(name);
     var img = name.toLowerCase().replace(/ /g, "_");
     var system = systems[type];
+    var folder = "";
     var effect = scripts[i].script;
-    switch (scripts[i].type) {
+    console.log(type);
+    switch (type) {
       case "Adept Powers":
         folder = "xcAlaQ05nmdn8TPj"
         break;
@@ -191,6 +203,9 @@ function createItems(scripts) {
         break;
       case "Devices": 
         folder = "mDfNQxEFSGTP5DJm"
+        break;
+      case "Programs":
+        folder = "2q9jU5X0hX8sJZqY"
         break;
       default:
         folder = ""
