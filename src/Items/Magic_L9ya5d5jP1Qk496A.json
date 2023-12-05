@@ -1,0 +1,19 @@
+{
+  "name": "Magic",
+  "sorting": "a",
+  "folder": null,
+  "type": "Item",
+  "_id": "L9ya5d5jP1Qk496A",
+  "sort": 0,
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "systemId": "shadowrun5e",
+    "systemVersion": "0.16.0",
+    "coreVersion": "11.315",
+    "createdTime": 1700075621187,
+    "modifiedTime": 1700075621187,
+    "lastModifiedBy": "fAKT19bNlg1OQX0D"
+  },
+  "_key": "!folders!L9ya5d5jP1Qk496A"
+}

@@ -1,0 +1,160 @@
+{
+  "name": "Increase Attribute (Agility)",
+  "type": "adept_power",
+  "img": "icons/svg/item-bag.svg",
+  "ownership": {
+    "default": 2,
+    "tROHWWxMphxJI1eL": 3
+  },
+  "system": {
+    "description": {
+      "value": "",
+      "chat": "",
+      "source": ""
+    },
+    "action": {
+      "type": "",
+      "test": "SuccessTest",
+      "category": "",
+      "attribute": "",
+      "attribute2": "",
+      "skill": "",
+      "armor": false,
+      "spec": "",
+      "mod": 0,
+      "mod_description": "",
+      "roll_mode": "",
+      "limit": {
+        "value": 0,
+        "base": 0,
+        "attribute": ""
+      },
+      "threshold": {
+        "value": 0,
+        "base": 0
+      },
+      "extended": false,
+      "damage": {
+        "type": {
+          "value": "",
+          "base": ""
+        },
+        "element": {
+          "value": "",
+          "base": ""
+        },
+        "value": 0,
+        "base": 0,
+        "ap": {
+          "value": 0,
+          "base": 0
+        },
+        "base_formula_operator": "add",
+        "attribute": "",
+        "source": {
+          "actorId": "",
+          "itemId": "",
+          "itemType": "",
+          "itemName": ""
+        }
+      },
+      "opposed": {
+        "type": "",
+        "test": "",
+        "attribute": "",
+        "attribute2": "",
+        "skill": "",
+        "armor": false,
+        "mod": 0,
+        "description": "",
+        "resist": {
+          "test": "",
+          "skill": "",
+          "attribute": "",
+          "attribute2": "",
+          "armor": false,
+          "mod": 0
+        }
+      },
+      "followed": {
+        "test": "",
+        "attribute": "",
+        "attribute2": "",
+        "skill": "",
+        "armor": false,
+        "mod": 0
+      },
+      "modifiers": []
+    },
+    "armor": {
+      "value": 0,
+      "mod": [],
+      "acid": 0,
+      "cold": 0,
+      "fire": 0,
+      "electricity": 0,
+      "radiation": 0,
+      "temp": 0,
+      "hardened": false
+    },
+    "importFlags": {
+      "name": "",
+      "type": "",
+      "subType": "",
+      "isFreshImport": false
+    },
+    "pp": 0,
+    "type": "",
+    "drain": false,
+    "level": 0
+  },
+  "effects": [
+    {
+      "_id": "Wu4vJr98cIC7Gm4b",
+      "name": "Increase Attribute (Agility)",
+      "transfer": true,
+      "flags": {
+        "effectmacro": {}
+      },
+      "changes": [
+        {
+          "key": "system.attributes.agility",
+          "mode": 0,
+          "value": "@system.level",
+          "priority": null
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "statuses": [],
+      "icon": null,
+      "tint": null,
+      "_key": "!items.effects!TwHWsS7XNeFdmW5A.Wu4vJr98cIC7Gm4b"
+    }
+  ],
+  "flags": {
+    "core": {}
+  },
+  "_stats": {
+    "systemId": "shadowrun5e",
+    "systemVersion": "0.17.0",
+    "coreVersion": "11.315",
+    "createdTime": 1696022797597,
+    "modifiedTime": 1701739440630,
+    "lastModifiedBy": "tROHWWxMphxJI1eL"
+  },
+  "folder": "xcAlaQ05nmdn8TPj",
+  "_id": "TwHWsS7XNeFdmW5A",
+  "sort": 0,
+  "_key": "!items!TwHWsS7XNeFdmW5A"
+}

@@ -166,24 +166,42 @@ function createFile(scripts) {
   }
 }
 
-function createItemsFile(scripts) {
+function createItems(scripts) {
   for (i = 0; i < scripts.length; i++) {
     var type = scripts[i].type;
     var itemid = randomID(16);
     var effectid = randomID(16);
     var name = scripts[i].name;
+    console.log(name);
     var img = name.toLowerCase().replace(/ /g, "_");
     var system = systems[type];
     var effect = scripts[i].script;
+    switch (scripts[i].type) {
+      case "Adept Powers":
+        folder = "xcAlaQ05nmdn8TPj"
+        break;
+      case "Foci":
+        folder = "lMjzmwRhJ89aIxP0"
+        break;
+      case "Metamagic":
+        folder = "kxqhWPhMqlxlwnnr"
+        break;
+      case "Devices": 
+        folder = "mDfNQxEFSGTP5DJm"
+        break;
+      default:
+        folder = ""
+    }
     var filecontents = {
       name: name,
-      type: type,
+      type: types[type],
       _id: itemid,
       img: `icons/svg/item-bag.svg`,
       sort: 0,
       ownership: {
         default: 2,
       },
+      folder: folder,
       system: system,
       effects: [
         {

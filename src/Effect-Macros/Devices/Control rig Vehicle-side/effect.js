@@ -2,14 +2,17 @@ let player = game.actors.get(actor.system.driver);
 let items = player.items;
 let rating = 0;
 let booster = false;
+const controlRig = game.i18n.localize("ITEM.nameRig");
+const technoRig = game.i18n.localize("ITEM.nameTechnoRig");
+const item_booster = game.i18n.localize("ITEM.nameBooster");
 //Check to see if the character has a control rig installed
 items.forEach((element) => {
-  if (element.name == "Control Rig") {
+  if (element.name == controlRig) {
     rating = element.system.technology.rating;
-  } else if (element.name == "Mind Over Machine") {
+  } else if (element.name == technoRig) {
     rating = element.system.rating;
   }
-  if (element.name == "Control Rig Booster") {
+  if (element.name == item_booster) {
     booster = true;
   }
 });

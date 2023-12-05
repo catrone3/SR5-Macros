@@ -19,6 +19,8 @@ fi
 
 cp -R ./releasescripts/packs $datadir/SR5-Compendium/
 cp module.json $datadir/SR5-Compendium/
+cp ./src/Items/* $datadir/SR5-Compendium/packs/SR5-Community-Items/_source
+cp 
 
 fvtt package workon "SR5-Compendium" --type "Module"
 fvtt package pack "SR5-Community-Macros"

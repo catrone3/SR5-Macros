@@ -1,0 +1,19 @@
+{
+  "name": "Matrix",
+  "sorting": "a",
+  "folder": null,
+  "type": "Item",
+  "_id": "mDfNQxEFSGTP5DJm",
+  "sort": 0,
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "systemId": "shadowrun5e",
+    "systemVersion": "0.16.0",
+    "coreVersion": "11.315",
+    "createdTime": 1700075654465,
+    "modifiedTime": 1700075654465,
+    "lastModifiedBy": "fAKT19bNlg1OQX0D"
+  },
+  "_key": "!folders!mDfNQxEFSGTP5DJm"
+}

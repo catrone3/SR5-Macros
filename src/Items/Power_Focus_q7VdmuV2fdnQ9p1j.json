@@ -1,0 +1,165 @@
+{
+  "name": "Power Focus",
+  "type": "equipment",
+  "_id": "q7VdmuV2fdnQ9p1j",
+  "img": "icons/svg/item-bag.svg",
+  "sort": 100000,
+  "ownership": {
+    "default": 2
+  },
+  "system": {
+    "description": {
+      "value": "",
+      "chat": "",
+      "source": ""
+    },
+    "action": {
+      "type": "",
+      "test": "SuccessTest",
+      "category": "",
+      "attribute": "",
+      "attribute2": "",
+      "skill": "",
+      "armor": false,
+      "spec": "",
+      "mod": 0,
+      "mod_description": "",
+      "roll_mode": "",
+      "limit": {
+        "value": 0,
+        "base": 0,
+        "attribute": ""
+      },
+      "threshold": {
+        "value": 0,
+        "base": 0
+      },
+      "extended": false,
+      "damage": {
+        "type": {
+          "value": "",
+          "base": ""
+        },
+        "element": {
+          "value": "",
+          "base": ""
+        },
+        "value": 0,
+        "base": 0,
+        "ap": {
+          "value": 0,
+          "base": 0
+        },
+        "base_formula_operator": "add",
+        "attribute": "",
+        "source": {
+          "actorId": "",
+          "itemId": "",
+          "itemType": "",
+          "itemName": ""
+        }
+      },
+      "opposed": {
+        "type": "",
+        "test": "",
+        "attribute": "",
+        "attribute2": "",
+        "skill": "",
+        "armor": false,
+        "mod": 0,
+        "description": "",
+        "resist": {
+          "test": "",
+          "skill": "",
+          "attribute": "",
+          "attribute2": "",
+          "armor": false,
+          "mod": 0
+        }
+      },
+      "followed": {
+        "test": "",
+        "attribute": "",
+        "attribute2": "",
+        "skill": "",
+        "armor": false,
+        "mod": 0
+      },
+      "modifiers": []
+    },
+    "technology": {
+      "rating": 1,
+      "availability": "",
+      "quantity": 1,
+      "cost": null,
+      "equipped": false,
+      "conceal": {
+        "base": 0,
+        "value": 0
+      },
+      "condition_monitor": {
+        "value": 0,
+        "max": 9
+      },
+      "wireless": true,
+      "networkController": null
+    },
+    "importFlags": {
+      "name": "",
+      "type": "",
+      "subType": "",
+      "isFreshImport": false
+    },
+    "result": {
+      "success": {
+        "matrix": {
+          "placeMarks": false
+        }
+      }
+    }
+  },
+  "effects": [
+    {
+      "_id": "P0nWeqcsKiHX8It0",
+      "name": "Power Focus",
+      "transfer": true,
+      "flags": {
+        "effectmacro": {}
+      },
+      "changes": [
+        {
+          "key": "system.attributes.magic",
+          "mode": 0,
+          "value": "@system.technology.rating"
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "icon": null,
+      "origin": null,
+      "tint": null,
+      "statuses": [],
+      "_key": "!items.effects!q7VdmuV2fdnQ9p1j.P0nWeqcsKiHX8It0"
+    }
+  ],
+  "flags": {},
+  "_stats": {
+    "systemId": "shadowrun5e",
+    "systemVersion": "0.17.0",
+    "coreVersion": "11.315",
+    "createdTime": 1696022797597,
+    "modifiedTime": 1701739983981,
+    "lastModifiedBy": "tROHWWxMphxJI1eL"
+  },
+  "folder": "lMjzmwRhJ89aIxP0",
+  "_key": "!items!q7VdmuV2fdnQ9p1j"
+}

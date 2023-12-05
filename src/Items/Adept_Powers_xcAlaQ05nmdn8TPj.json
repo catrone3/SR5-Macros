@@ -1,0 +1,19 @@
+{
+  "name": "Adept Powers",
+  "sorting": "a",
+  "folder": "L9ya5d5jP1Qk496A",
+  "type": "Item",
+  "_id": "xcAlaQ05nmdn8TPj",
+  "sort": 100000,
+  "color": null,
+  "flags": {},
+  "_stats": {
+    "systemId": "shadowrun5e",
+    "systemVersion": "0.16.0",
+    "coreVersion": "11.315",
+    "createdTime": 1700075586100,
+    "modifiedTime": 1700075626567,
+    "lastModifiedBy": "fAKT19bNlg1OQX0D"
+  },
+  "_key": "!folders!xcAlaQ05nmdn8TPj"
+}

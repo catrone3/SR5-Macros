@@ -1,5 +1,6 @@
 let player = actor;
 console.log(player);
+const persona = game.i18n.localize("ITEM.nameLivingPersona");
 
 let device_rating = player.system.attributes.resonance.value;
 let attack = player.system.attributes.charisma.value;
@@ -10,7 +11,7 @@ let firewall = player.system.attributes.willpower.value;
 let items_list = actor.items._source;
 let actor_items = actor.items;
 
-var device = actor_items.getName("Living Persona");
+var device = actor_items.getName(persona);
 device.update({ "system.technology.rating": device_rating });
 device.update({ "system.atts.att1.value": attack });
 device.update({ "system.atts.att2.value": sleaze });

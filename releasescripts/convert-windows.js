@@ -66,7 +66,6 @@ walk("./src/Macros", function (err, results) {
     if (file.endsWith(".js")) {
       if (file.endsWith("cleanup.js")) return;
       relative = path.relative("./src/Effect-Macros", file);
-      console.log(relative.split("\\")[3]);
       name = relative.split("\\")[3];
       filecontents = convertFile(file);
       script = {
@@ -90,25 +89,30 @@ walk("./src/Effect-Macros", function (err, results) {
   var script = {};
   results.forEach((file) => {
     if (file.endsWith(".js")) {
-      if (file.endsWith("cleanup.js")) return;
       relative = path.relative("./src/Effect-Macros", file);
-      console.log(relative.split("\\")[1]);
-      type = types[relative.split("\\")[0]];
+      type = relative.split("\\")[0];
       name = relative.split("\\")[1];
       filecontents = convertFile(file);
-      if (type == "device" || type == "equipment") {
-        wireless = true;
+      if (scripts.includes(name)) {
+        console.log("duplicate");
+        scripts.indexOf(name).script = filecontents;
+      } else {
+        if (file.endsWith("cleanup.js")) {
+          script.cleanup = filecontents;
+        } else {
+          script.script = filecontents;
+        }
+        if (type == "device" || type == "equipment") {
+          wireless = true;
+        }
+        script.name = name;
+        script.type = type;
+        script.wireless = wireless;
       }
-      script = {
-        script: filecontents,
-        name: name,
-        type: type,
-        wireless: wireless,
-      };
       scripts.push(script);
     }
   });
-  createItemsFile(scripts);
+  createItems(scripts);
 });
 
 function convertFile(file) {
@@ -127,7 +131,6 @@ function writeFile(file, folder, name) {
       if (err) {
         return console.log(err);
       }
-      console.log("The file was saved!");
     },
   );
 }
@@ -166,24 +169,42 @@ function createFile(scripts) {
   }
 }
 
-function createItemsFile(scripts) {
+function createItems(scripts) {
   for (i = 0; i < scripts.length; i++) {
     var type = scripts[i].type;
     var itemid = randomID(16);
     var effectid = randomID(16);
     var name = scripts[i].name;
+    console.log(name);
     var img = name.toLowerCase().replace(/ /g, "_");
     var system = systems[type];
     var effect = scripts[i].script;
+    switch (scripts[i].type) {
+      case "Adept Powers":
+        folder = "xcAlaQ05nmdn8TPj"
+        break;
+      case "Foci":
+        folder = "lMjzmwRhJ89aIxP0"
+        break;
+      case "Metamagic":
+        folder = "kxqhWPhMqlxlwnnr"
+        break;
+      case "Devices": 
+        folder = "mDfNQxEFSGTP5DJm"
+        break;
+      default:
+        folder = ""
+    }
     var filecontents = {
       name: name,
-      type: type,
+      type: types[type],
       _id: itemid,
       img: `icons/svg/item-bag.svg`,
       sort: 0,
       ownership: {
         default: 2,
       },
+      folder: folder,
       system: system,
       effects: [
         {
