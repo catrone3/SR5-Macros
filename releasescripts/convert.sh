@@ -29,7 +29,7 @@ elif [[ "$OSTYPE" == "msys" ]]; then
     node ./releasescripts/convert-windows.js
 fi
 
-cp -rn ./src/Items/* ./releasescripts/packs/SR5-Community-Items/_source/
+cp -rn ./src/Folders/* ./releasescripts/packs/SR5-Community-Items/_source/
 cp -r ./releasescripts/packs $datadir/SR5-Compendium/
 cp module.json $datadir/SR5-Compendium/
 cp -r ./releasescripts/lang $datadir/SR5-Compendium/lang

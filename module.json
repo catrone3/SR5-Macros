@@ -3,7 +3,7 @@
   "title": "SR5-Compendium",
   "description": "A collection of macros and item effects for Shadowrun 5th Edition",
   "author": "catrone3",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "compatibility": {
     "minimum": "11",
     "verified": "11"
@@ -40,6 +40,14 @@
     }
   ],
   "relationships": {
+    "systems": [{
+      "id": "shadowrun5e",
+      "type": "system",
+      "manifest": "https://raw.githubusercontent.com/SR5-FoundryVTT/SR5-FoundryVTT/master/system.json",
+      "compatibility": {
+        "verified": "0.17.0"
+      }
+    }],
     "requires": [
       {
         "id": "warpgate",
