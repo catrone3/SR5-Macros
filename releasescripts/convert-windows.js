@@ -91,9 +91,9 @@ function itemwalk(directory, callback) {
 
 function processFile(jsonFilePath) {
   try {
-    if (jsonFilePath && jsonFilePath.endsWith && jsonFilePath.endsWith(".json")) {
+    if (jsonFilePath && jsonFilePath.endsWith(".json")) {
+      console.log(jsonFilePath);
       var jsonContent = JSON.parse(convertFile(jsonFilePath));
-      console.log(jsonContent.name);
 
       if (jsonContent && jsonContent.effects && Array.isArray(jsonContent.effects) && jsonContent.effects.length > 0) {
         const effectIndex = 0; // Assuming there is a single entry in the effects array
@@ -112,10 +112,13 @@ function processFile(jsonFilePath) {
         const folder = path.dirname(jsonFilePath);
         console.log("Creating Item Jsons")
         // Read and add contents of each JavaScript file in the folder
+        var name = jsonContent.name;
+        console.log(name);
         fs.readdirSync(folder).forEach((file) => {
           const jsFilePath = path.join(folder, file);
           if (jsFilePath.endsWith(".js")) {
             const key = path.basename(jsFilePath, ".js");
+            console.log(key);
             try {
               const jsContent = convertFile(jsFilePath);
 
@@ -139,11 +142,15 @@ function processFile(jsonFilePath) {
         // Write the new JSON file
         console.log("Writing file:" + jsonContent.name);
         jsonContent = JSON.stringify(jsonContent, null, 4);
-        writeFile(jsonContent, "SR5-Community-Items", jsonContent.name);
+        writeFile(jsonContent, "SR5-Community-Items", name);
       } else {
         console.error(`Effects array is empty in file: ${jsonFilePath}`);
       }
-    } else {
+    } 
+    else if {
+      
+    }
+    else {
       console.error(`Invalid jsonFilePath: ${jsonFilePath}`);
     }
   } catch (error) {
@@ -217,5 +224,5 @@ function createFile(scripts) {
   }
 }
 
-const directoryPath = './src/Effect-Macros';
+const directoryPath = './src/Effect-Macros/Spells';
 itemwalk(directoryPath, processFile);

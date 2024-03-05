@@ -13,9 +13,9 @@ function itemLoop(items, state) {
   items.forEach((element) => {
     if (
       element.system.hasOwnProperty("technology") &&
-      element.system.technology.wireless
+      element.system.technology.hasOwnProperty("wireless")
     ) {
-      element.update({ "flags.wireless": state });
+      element.update({ "system.technology.wireless": state });
       console.log(element);
     }
   });
