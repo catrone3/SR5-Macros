@@ -47,6 +47,13 @@ Discord names are used, github accounts are linked where known
 
 #### Contributing
 
+### Debugging
+
+#### Character sheet does not open
+If you have a character sheet that does not open from a player editing effects or you making your own outside of this, it is likely that the ```Add``` Change Mode is being used in at least one effect. To fix this you will need to export the character sheet and check for this in the json file you get. 
+
+To do this, open the file in any simple text editor, notepad works just fine for this. Do a find and replace and search for ```"mode": 2```, this should turn up at least one line that matches. If this does not find any matches, you may need to try other numbers 1-5 ```Note: There are some instances from macros in this repo that use "mode": 5 instead of "mode": 0```. Find any that match and change them to ```"mode": 0```. Once this is done, do an import of the file on the character (This is done via right click just like the export, this is not the same import method used for importing chummer sheets). You should now be able to open the character sheet and adjust the effects as needed.
+
 #### Licenses
 
 Icons provided by
